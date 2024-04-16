@@ -16,19 +16,6 @@ jobs:
         application_id: ${{ secrets.GH_AUTOMATION_ID }}
         application_private_key: ${{ secrets.GH_AUTOMATION_PRIVATE_KEY }}
 
-    - id: get-token
-      env: 
-        github_app_token: ${{ steps.get-workflow-token.outputs.token }}
-        PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
-      run: |
-        if [ -n $github_app_token ]; then
-          echo "token=$github_app_token" >> $GITHUB_OUTPUT
-          echo "Using token from GitHub App"
-        else
-          echo "token=$PAT_GITHUB" >> $GITHUB_OUTPUT
-          echo "Using personal access token from secret 'PAT_GITHUB'"
-        fi
-
     - uses: devops-actions/issue-comment-tag@v0.1.8
       name: Tag a user or team in an issue comment
       with: 
