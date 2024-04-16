@@ -36,4 +36,4 @@ jobs:
         team: ${{ vars.NOTIFICATION_TEAM }}
         owner: ${{ github.repository_owner }}
         repo: ${{ github.repository }}
-        GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
+        GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
